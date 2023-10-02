@@ -95,6 +95,7 @@ public class Scoreboard extends JFrame implements ActionListener, MouseListener{
         });
         reset.addActionListener(this);
         endgame.addActionListener(this);
+        endmatch.addActionListener(this);
 
         this.add(scoreboardpanel1);
         this.add(team1space);
@@ -152,6 +153,26 @@ public class Scoreboard extends JFrame implements ActionListener, MouseListener{
                     roundswin1.setText(Integer.toString(totalroundwins1));
                     roundswin2.setText(Integer.toString(totalroundwins2));
                     scoreboard2.setText(Integer.toString(scoreboardmatches2));
+            }
+        }
+        else if(e.getSource() == endmatch){
+            if(Integer.parseInt(scoreboard1.getText()) > Integer.parseInt(scoreboard2.getText())){
+                JOptionPane.showMessageDialog(
+                    null, 
+                    team1.getText() + " wins " + team2.getText() + " with the score " + scoreboard1.getText() + " - " + scoreboard2.getText(), 
+                    "End Match",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                this.dispose();
+            }
+            else if(Integer.parseInt(scoreboard2.getText()) > Integer.parseInt(scoreboard1.getText())){
+                JOptionPane.showMessageDialog(
+                    null, 
+                    team2.getText() + " wins " + team1.getText() + " with the score " + scoreboard2.getText() + " - " + scoreboard1.getText(), 
+                    "End Match",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
+                this.dispose();
             }
         }
     }
